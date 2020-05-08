@@ -99,7 +99,6 @@ import me.blackvein.quests.util.Lang;
 import me.blackvein.quests.util.LocaleQuery;
 import me.blackvein.quests.util.MiscUtil;
 import me.clip.placeholderapi.PlaceholderAPI;
-
 import net.citizensnpcs.api.CitizensAPI;
 import net.citizensnpcs.api.npc.NPC;
 
@@ -1895,6 +1894,9 @@ public class Quests extends JavaPlugin implements ConversationAbandonedListener 
         }
         if (config.contains("quests." + questKey + ".options.require-same-quest")) {
             opts.setRequireSameQuest(config.getBoolean("quests." + questKey + ".options.require-same-quest"));
+        }
+        if (config.contains("quests." + questKey + ".options.show-rewards")) {
+            opts.setShowReward(config.getBoolean("quests." + questKey + ".options.show-rewards"));
         }
     }
 

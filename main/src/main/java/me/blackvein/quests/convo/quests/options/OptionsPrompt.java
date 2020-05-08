@@ -282,7 +282,7 @@ public class OptionsPrompt extends QuestsEditorNumericPrompt {
             super(context);
         }
 
-        private final int size = 3;
+        private final int size = 4;
         
         @Override
         public int getSize() {
@@ -302,6 +302,8 @@ public class OptionsPrompt extends QuestsEditorNumericPrompt {
             case 2:
                 return ChatColor.BLUE;
             case 3:
+            	return ChatColor.BLUE;
+            case 4:
                 return ChatColor.GREEN;
             default:
                 return null;
@@ -316,6 +318,8 @@ public class OptionsPrompt extends QuestsEditorNumericPrompt {
             case 2:
                 return ChatColor.YELLOW + Lang.get("optAllowQuitting");
             case 3:
+            	return ChatColor.YELLOW+"Show rewards";
+            case 4:
                 return ChatColor.YELLOW + Lang.get("done");
             default:
                 return null;
@@ -350,6 +354,18 @@ public class OptionsPrompt extends QuestsEditorNumericPrompt {
                             + Lang.get(String.valueOf(quittingOpt))) + ChatColor.GRAY + ")";
                 }
             case 3:
+            	 if (context.getSessionData(CK.OPT_SHOW_REWARD) == null) {
+                     boolean defaultOpt = new Options().getShowReward();
+                     return ChatColor.GRAY + "(" + (defaultOpt ? ChatColor.GREEN 
+                             + Lang.get(String.valueOf(defaultOpt)) : ChatColor.RED 
+                             + Lang.get(String.valueOf(defaultOpt))) + ChatColor.GRAY + ")";
+                 } else {
+                    boolean rewardOpt = (Boolean) context.getSessionData(CK.OPT_SHOW_REWARD);
+                     return ChatColor.GRAY + "(" + (rewardOpt ? ChatColor.GREEN
+                             + Lang.get(String.valueOf(rewardOpt)) : ChatColor.RED 
+                             + Lang.get(String.valueOf(rewardOpt))) + ChatColor.GRAY + ")";
+                 }
+            case 4:
                 return "";
             default:
                 return null;
@@ -381,6 +397,10 @@ public class OptionsPrompt extends QuestsEditorNumericPrompt {
                 tempPrompt = new OptionsGeneralPrompt(context);
                 return new OptionsTrueFalsePrompt(context);
             case 3:
+            	tempKey = CK.OPT_SHOW_REWARD;
+            	tempPrompt = new OptionsGeneralPrompt(context);
+            	return new OptionsTrueFalsePrompt(context);
+            case 4:
                 tempKey = null;
                 tempPrompt = null;
                 try {

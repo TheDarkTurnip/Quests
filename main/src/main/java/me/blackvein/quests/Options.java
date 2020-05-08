@@ -19,7 +19,7 @@ public class Options {
     private boolean usePartiesPlugin = true;
     private int shareProgressLevel = 1;
     private boolean requireSameQuest = true;
-    
+    private boolean showReward = true;
     public boolean getAllowCommands() {
         return allowCommands;
     }
@@ -67,4 +67,12 @@ public class Options {
     public void setRequireSameQuest(boolean requireSameQuest) {
         this.requireSameQuest = requireSameQuest;
     }
+
+	public boolean getShowReward() {
+		return showReward;
+	}
+	
+	public void setShowReward(boolean showReward) {
+		this.showReward = showReward;
+	}
 }

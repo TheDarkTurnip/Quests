@@ -270,6 +270,7 @@ public class QuestFactory implements ConversationAbandonedListener {
         context.setSessionData(CK.OPT_USE_PARTIES_PLUGIN, opt.getUsePartiesPlugin());
         context.setSessionData(CK.OPT_SHARE_PROGRESS_LEVEL, opt.getShareProgressLevel());
         context.setSessionData(CK.OPT_REQUIRE_SAME_QUEST, opt.getRequireSameQuest());
+        context.setSessionData(CK.OPT_SHOW_REWARD, opt.getShowReward());
         // Stages (Objectives)
         int index = 1;
         for (Stage stage : q.getStages()) {
@@ -920,6 +921,7 @@ public class QuestFactory implements ConversationAbandonedListener {
                 ? (Integer) context.getSessionData(CK.OPT_SHARE_PROGRESS_LEVEL) : null);
         opts.set("require-same-quest", context.getSessionData(CK.OPT_REQUIRE_SAME_QUEST) != null 
                 ? (Boolean) context.getSessionData(CK.OPT_REQUIRE_SAME_QUEST) : null);
+        opts.set("show-rewards", context.getSessionData(CK.OPT_SHOW_REWARD) != null ? (Boolean) context.getSessionData(CK.OPT_SHOW_REWARD) : null);
         if (opts.getKeys(false).isEmpty()) {
             section.set("options", null);
         }
